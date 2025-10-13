@@ -38,7 +38,14 @@ The workflow includes:
 │   └── Phoenix_UHI_Workflow.knwf     # Main KNIME workflow file
 │
 ├── Scripts/
+│   ├── lst_preprocessing.R           # QC filtration and scaling in R
+│   ├── ndvi_preprocessing.R          # QC filtration and scaling in R
 │   ├── lst_composite.R               # Median compositing in R
+│   ├── ndvi_composite.R              # Median compositing in R
+│   ├── lst_resampling.R              # Upscaling to the 250m grid in R
+│   ├── clipping&masking.R            # Clipping each to the city's bounding box in R
+│   ├── urban_vs_rural_mask.R         # Contrasting urban temperatures to the rural reference
+│   ├── suhi_computation.R            # Quantifying surface urban heat island (suhi) effect
 │   ├── ndvi_lst_regression.R         # NDVI-LST regression analysis
 │   ├── zonal_stats.py                # Python zonal statistics for villages
 │
