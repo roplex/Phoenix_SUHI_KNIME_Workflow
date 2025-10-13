@@ -1,5 +1,3 @@
-**The following script was used to apply QC filtration and scaling to the LST rasters**
-
 library(terra)
 
 # ---- Get file path from KNIME ----
