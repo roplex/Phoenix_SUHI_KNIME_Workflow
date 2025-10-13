@@ -38,16 +38,18 @@ The workflow includes:
 │   └── Phoenix_UHI_Workflow.knwf     # Main KNIME workflow file
 │
 ├── Scripts/
-│   ├── lst_preprocessing.R           # QC filtration and scaling in R
-│   ├── ndvi_preprocessing.R          # QC filtration and scaling in R
-│   ├── lst_composite.R               # Median compositing in R
-│   ├── ndvi_composite.R              # Median compositing in R
-│   ├── lst_resampling.R              # Upscaling to the 250m grid in R
-│   ├── clipping_&_masking.R          # Clipping each to the city's bounding box in R
-│   ├── urban_vs_rural_mask.R         # Contrasting urban temperatures to the rural reference
-│   ├── suhi_computation.R            # Quantifying surface urban heat island (suhi) effect
-│   ├── ndvi_lst_regression.R         # NDVI-LST regression analysis
-│   ├── zonal_stats.py                # Python zonal statistics for villages
+│   ├── LST_preprocessing.R           		# QC filtration and scaling in R
+│   ├── NDVI_preprocessing.R          		# QC filtration and scaling in R
+│   ├── LST_compositing.R             		# Median compositing in R
+│   ├── NDVI_compositing.R            		# Median compositing in R
+│   ├── LST_resampling.R             	 	# Upscaling to the 250m grid in R
+│   ├── LST_resampling_diagnosis.R          # Diagnosing the resampling of LST to the NDVI grid in R
+│   ├── Clipping&Masking.R            		# Clipping each to the city's bounding box in R
+│   ├── Clipping&Masking_diagnosis.R        # Diagnosing the clipping of the rasters in R
+│   ├── UrbanVsRural_Mask.R           		# Contrasting urban temperatures to the rural reference zone
+│   ├── SUHI_computation.R            		# Quantifying surface urban heat island (SUHI) effect
+│   ├── NDVI-LST_analysis.R           		# NDVI-LST regression analysis
+│   ├── Zonal_statistics.py           		# Python zonal statistics for villages
 │
 ├── Data_Samples/
 │   ├── Phoenix_AOI.geojson
