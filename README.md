@@ -1,11 +1,8 @@
-# Phoenix_SUHI_KNIME_Workflow
-A reproducible Earth Observation (EO) analysis workflow built in KNIME integrating R and Python for LST, NDVI, and SUHI mapping over Phoenix, AZ (May–Aug 2024).
-
 # KNIME Workflow for Surface Urban Heat Island (SUHI) Analysis — Phoenix Case Study
 
 This repository contains the complete and reproducible **KNIME workflow**, associated **Python and R scripts**, and documentation used in the study:
 
-> **"Modular EO Workflow for Surface Urban Heat Island Analysis Using KNIME: A Case Study of Phoenix (May–Aug 2024)"**
+> **"Designing Scalable Workflows for Spatial Analysis of Earth Observation Data with KNIME: A Case Study of Phoenix (May–Aug 2024)"**
 
 The workflow demonstrates how **KNIME** can serve as a visual, modular, and reproducible platform for **Earth Observation (EO)** data processing — integrating MODIS NDVI and LST datasets, and applying both R and Python analytics for SUHI computation and zonal statistics.
 
