@@ -70,10 +70,10 @@ The workflow includes:
 
 ## ⚙️ Dependencies
 
-KNIME
-	•	KNIME Analytics Platform ≥ 5.5
-	•	R Integration Extension
-	•	Python Integration Extension
+**KNIME**
+- KNIME Analytics Platform ≥ 5.5
+- R Integration Extension
+- Python Integration Extension
 
 Python (via KNIME environment)
 
@@ -85,7 +85,7 @@ Or use the provided environment file:
 ```bash
 conda env create -f environment.yml
 ```
-R Packages
+R Packages (for the conda environment propagation)
 ```bash
 install.packages(c("terra", "raster", "ggplot2", "dplyr"))
 ```
