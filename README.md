@@ -59,7 +59,7 @@ The workflow includes:
 │   ├── ndvi_lst_scatter.png
 │   ├── table_summary_example.png
 │
-├── environment.yml                   # Conda environment for Python dependencies
+├── Environments                   # Conda environments for Python and R dependencies
 ├── .gitignore
 ├── LICENSE
 └── README.md
@@ -76,7 +76,9 @@ The workflow includes:
 - R Integration Extension
 - Python Integration Extension
 
-Python (via KNIME environment)
+**Environment Setup**
+
+- **Python** (Set under Preferences → KNIME → Python)
 
 Install with Conda:
 ```bash
@@ -86,11 +88,18 @@ Or use the provided environment file:
 ```bash
 conda env create -f environment.yml
 ```
-R Packages (for the conda environment propagation)
+
+- **R** (Linked via the Conda Environment Propagation node)
 ```bash
 install.packages(c("terra", "raster", "ggplot2", "dplyr"))
 ```
+Or use the provided environment file:
+```bash
+conda env create -f R_environment.yml
+```
 
+This workflow uses two separate Conda environments — one for Python and one for R — to support different scripting nodes in KNIME.
+Each environment can be recreated from the provided .yml files.
 
 ⸻
 
