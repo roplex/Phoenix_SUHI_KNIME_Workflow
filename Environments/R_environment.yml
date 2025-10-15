@@ -1,0 +1,42 @@
+name: geo_env
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  # --- Core R environment ---
+  - r-base=4.3.3
+  - r-essentials
+
+  # --- Spatial and raster analysis packages ---
+  - r-raster
+  - r-rgdal
+  - r-sf
+  - r-sp
+  - r-terra
+  - r-stars
+
+  # --- Data manipulation and visualization ---
+  - r-dplyr
+  - r-ggplot2
+  - r-tidyverse
+  - r-data.table
+  - r-tmap
+
+  # --- Statistical analysis ---
+  - r-stats
+  - r-caret
+  - r-mgcv
+
+  # --- KNIME integration and utilities ---
+  - r-reticulate
+  - r-jsonlite
+  - r-readr
+  - r-stringr
+  - r-glue
+
+  # --- System dependencies ---
+  - gdal
+  - proj
+  - geos
+  - udunits2
+
