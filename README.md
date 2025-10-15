@@ -42,7 +42,7 @@ The workflow includes:
 │   ├── Phoenix_Workflow.svg
 │   ├── SUHI_Map.png
 │   ├── villages_zonal_stats_py.csv
-
+│
 ├── Environments                   # Python and R environments
 │   ├── R_environment.yml        
 │   ├── environment.yml
