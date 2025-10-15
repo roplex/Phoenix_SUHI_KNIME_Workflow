@@ -60,6 +60,7 @@ The workflow includes:
 │   ├── table_summary_example.png
 │
 ├── environment.yml                   # Conda environment for Python dependencies
+├── .gitignore
 ├── LICENSE
 └── README.md
 ```
