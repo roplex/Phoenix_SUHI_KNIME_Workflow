@@ -1,0 +1,44 @@
+# ==========================================================
+# Environment file for Phoenix SUHI KNIME Workflow
+# ----------------------------------------------------------
+# Note:
+# KNIME integration is NOT installed via Conda.
+# It is managed inside the KNIME Analytics Platform itself
+# (configured via Preferences > Python > Python environment).
+#
+# This environment supports running Python-based nodes
+# such as the Zonal Statistics computation and visualization
+# steps for the Phoenix SUHI workflow.
+# ==========================================================
+
+name: py3_knime
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  # Core Python
+  - python=3.9
+  - pip
+  - numpy
+  - pandas
+  - matplotlib
+  - scipy
+
+  # Geospatial Libraries
+  - geopandas
+  - rasterio
+  - fiona
+  - shapely
+  - pyproj
+  - rasterstats
+  - gdal
+
+  # Machine Learning / Analysis
+  - scikit-learn
+  - seaborn
+
+  # Utilities
+  - jupyter
+  - ipython
+  - tqdm
