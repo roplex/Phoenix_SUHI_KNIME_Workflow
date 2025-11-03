@@ -2,7 +2,7 @@
 
 This repository contains the complete and reproducible **KNIME workflow**, associated **Python and R scripts**, and documentation used in the study:
 
-> **"Designing Scalable Workflows for Spatial Analysis of Earth Observation Data with KNIME: A Case Study of Phoenix (May–Aug 2024)"**
+> **"Designing Scalable Workflows for Spatial Analysis of Earth Observation Data using KNIME: A Case Study of Phoenix (May–Aug 2024)"**
 
 The workflow demonstrates how **KNIME** can serve as a visual, modular, and reproducible platform for **Earth Observation (EO)** data processing — integrating MODIS NDVI and LST datasets, and applying both R and Python analytics for SUHI computation and zonal statistics.
 
@@ -174,7 +174,7 @@ LST = 𝜶 + 𝜷 · NDVI
 
 If you use this repository, please cite:
 
-Rop, A., Jain, Devika (2025). Designing Scalable Workflows for Spatial Analysis of Earth Observation Data with KNIME: A Case Study of Phoenix (May–August 2024).
+Rop, Alex; Jain, Devika (2025). Designing Scalable Workflows for Spatial Analysis of Earth Observation Data using KNIME: A Case Study of Phoenix (May–August 2024).
 
 [GitHub Repository](https://github.com/roplex/Phoenix_SUHI_KNIME_Workflow)
 
@@ -188,7 +188,7 @@ Author: Rop K. Alex | Geospatial Engineer
 
 Email: ropalex44@gmail.com
 
-Affiliation: Center for Geographic Analysis - Harvard University
+Affiliation: Spatial Data Lab, Center for Geographic Analysis - Harvard University
 
 GitHub: https://github.com/roplex
 
