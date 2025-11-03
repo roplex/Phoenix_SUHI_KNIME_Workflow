@@ -20,8 +20,8 @@ The workflow includes:
 - **Data preprocessing:** QC filtering, masking, reprojection, and resampling  
 - **Median compositing:** Generation of seasonal (May–Aug 2024) LST and NDVI composites  
 - **SUHI computation:** Urban–rural LST differentials  
-- **NDVI–LST regression:** Assessing vegetation–temperature relationships  
-- **Zonal statistics:** Aggregating LST, NDVI, and SUHI by Phoenix urban villages (Python-based)  
+- **NDVI–LST regression (global & stratified) analysis:** Assessing vegetation–temperature relationships  
+- **Zonal statistics computation:** Aggregating LST, NDVI, and SUHI by Phoenix urban villages (Python-based)  
 - **Visualization:** Histograms, scatter plots, and summary tables  
 
 ⸻
