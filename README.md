@@ -14,8 +14,8 @@ This end-to-end KNIME workflow automates the main steps for Surface Urban Heat I
 The workflow includes:
 
 - **Importing MODIS datasets:**  
-  - LST (MOD11A2, 1 km, 8-day composites)  
-  - NDVI (MOD13Q1, 250 m, 16-day composites)
+  - LST (MOD11A2, 8-day, 1km resolution)  
+  - NDVI (MOD13Q1, 16-day, 250m resolution)
 
 - **Data preprocessing:** QC filtering, masking, reprojection, and resampling  
 - **Median compositing:** Generation of seasonal (May–Aug 2024) LST and NDVI composites  
