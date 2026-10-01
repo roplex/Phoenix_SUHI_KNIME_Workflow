@@ -2,7 +2,8 @@
 
 This repository contains the complete and reproducible **KNIME workflow**, associated **Python and R scripts**, and documentation used in the study:
 
-> **"Designing Scalable Workflows for Spatial Analysis of Earth Observation Data using KNIME: A Case Study of Phoenix (May–Aug 2024)"**
+> **"Harmonizing Multi-Resolution Earth Observation Data through Scalable KNIME Workflows:
+A Surface Urban Heat Island Case Study in Phoenix, Arizona"**
 
 The workflow demonstrates how **KNIME** can serve as a visual, modular, and reproducible platform for **Earth Observation (EO)** data processing — integrating MODIS NDVI and LST datasets, and applying both R and Python analytics for SUHI computation and zonal statistics.
 
