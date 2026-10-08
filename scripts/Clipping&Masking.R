@@ -17,10 +17,11 @@
 
 library(terra)
 
+phx_root <- Sys.getenv("PHX_ROOT", unset = "PhoenixData2")  # set PHX_ROOT to your local data folder (see README)
 # ---- Inputs from KNIME ----
 lst_resampled_path <- as.character(knime.in[["resampled_lst_path"]])  # wide, TsHARP-sharpened
 ndvi_aligned_path  <- as.character(knime.in[["ndvi_aligned_path"]])   # wide, aligned NDVI
-phoenix_path       <- "/Users/roplex/Desktop/EO_Harmonization/PhoenixData/Boundary/City_Limit_Light_Outline.geojson"
+phoenix_path       <- file.path(phx_root, "Boundary", "City_Limit_Light_Outline.geojson")
 
 # ---- Load rasters and AOI ----
 lst_resampled <- rast(lst_resampled_path)

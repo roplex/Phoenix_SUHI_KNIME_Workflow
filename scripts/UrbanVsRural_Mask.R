@@ -9,10 +9,11 @@ lst_clipped_path  <- as.character(knime.in[["lst_clipped_path"]])
 ndvi_clipped_path <- as.character(knime.in[["ndvi_clipped_path"]])
 lst_wide_path     <- as.character(knime.in[["lst_wide_path"]])
 
+phx_root <- Sys.getenv("PHX_ROOT", unset = "PhoenixData2")  # set PHX_ROOT to your local data folder (see README)
 # Local pre-processed assets
-phx_ua_path  <- "/Users/roplex/Desktop/EO_Harmonization/PhoenixData2/Preprocessed/phoenix_urban_area.gpkg"
-wc_mask_path <- "/Users/roplex/Desktop/EO_Harmonization/PhoenixData2/Preprocessed/worldcover_non_urban_aligned.tif"
-dem_path     <- "/Users/roplex/Desktop/EO_Harmonization/PhoenixData2/Preprocessed/dem_aligned.tif"
+phx_ua_path  <- file.path(phx_root, "Preprocessed", "phoenix_urban_area.gpkg")
+wc_mask_path <- file.path(phx_root, "Preprocessed", "worldcover_non_urban_aligned.tif")
+dem_path     <- file.path(phx_root, "Preprocessed", "dem_aligned.tif")
 
 stopifnot(
   file.exists(lst_clipped_path),
@@ -233,7 +234,7 @@ cat(sprintf("Option A excluding cold-tail: %.2f degC (n=%d) vs %.2f degC unfilte
 # wc_mask only stores a binary non-urban flag (classes 20/30/40/60 already
 # collapsed to 1); to see WHICH of those classes the cold-tail pixels are,
 # read the original multi-class WorldCover raster directly.
-worldcover_raw_path <- "/Users/roplex/Desktop/EO_Harmonization/PhoenixData2/WorldCover/ESA_WorldCover_10m_2021_v200_N33W114_Map.tif"
+worldcover_raw_path <- file.path(phx_root, "WorldCover", "ESA_WorldCover_10m_2021_v200_N33W114_Map.tif")
 stopifnot(file.exists(worldcover_raw_path))
 worldcover_raw <- rast(worldcover_raw_path)
 

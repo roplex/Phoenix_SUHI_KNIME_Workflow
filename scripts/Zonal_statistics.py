@@ -26,7 +26,9 @@ suhi_path = input_df["suhi_path"].iloc[0]
 # pipeline (Stratified NDVI-LST Regression, the village-confounding
 # diagnostic) has used PhoenixData2; the original PhoenixData (no "2") path
 # is stale from before the data reorganization.
-villages_path = "/Users/roplex/Desktop/EO_Harmonization/PhoenixData2/Boundary/Villages.geojson"
+# Set PHX_ROOT to your local data folder (see README)
+phx_root = os.environ.get("PHX_ROOT", "PhoenixData2")
+villages_path = os.path.join(phx_root, "Boundary", "Villages.geojson")
 
 # --- File-existence checks -- none existed in the original script ---
 for label, p in [("lst_path", lst_path), ("ndvi_path", ndvi_path),

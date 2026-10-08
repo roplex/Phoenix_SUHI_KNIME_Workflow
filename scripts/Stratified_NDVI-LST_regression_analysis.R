@@ -35,7 +35,8 @@ stopifnot(file.exists(lst_path), file.exists(ndvi_path), file.exists(suhi_path))
 # certainly stale from before the data reorganization.
 # VERIFY this file actually exists at this path before trusting results --
 # it was not independently confirmed as part of this correction pass.
-villages_path <- "/Users/roplex/Desktop/EO_Harmonization/PhoenixData2/Boundary/Villages.geojson"
+phx_root <- Sys.getenv("PHX_ROOT", unset = "PhoenixData2")  # set PHX_ROOT to your local data folder (see README)
+villages_path <- file.path(phx_root, "Boundary", "Villages.geojson")
 stopifnot(file.exists(villages_path))
 
 # ---- Load rasters and vector ----

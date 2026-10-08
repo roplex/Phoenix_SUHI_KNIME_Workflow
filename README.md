@@ -32,40 +32,38 @@ The workflow includes:
 ```bash
 📦 Phoenix_SUHI_KNIME_Workflow
 │
-├── Data_Samples/
+├── Data_Samples/                  # Small sample inputs for trying the nodes
 │   ├── City_Limit_Light_Outline.geojson
 │   ├── Sample_LST.tif
 │   ├── Sample_NDVI.tif
-│   ├── Villages.tif
+│   └── Villages.geojson
 │
-├── Docs/
-│   ├── NDVI_LST_scatter.png        
+├── Docs/                          # Example outputs
+│   ├── NDVI_LST_scatter.png
 │   ├── Phoenix_Workflow.svg
-│   ├── SUHI_Map.png
-│   ├── villages_zonal_stats_py.csv
+│   ├── SUHI_map.tif
+│   └── villages_zonal_stats_py.csv
 │
-├── Environments                   # Python and R environments
-│   ├── R_environment.yml        
-│   ├── environment.yml
+├── Environments/                  # Python and R Conda environments
+│   ├── R_environment.yml
+│   └── environment.yml
 │
 ├── KNIME_Workflow/
-│   └── Phoenix_SUHI_Workflow.knwf     # Main KNIME workflow file
+│   └── Phoenix_SUHI_Workflow.knwf # Main KNIME workflow file
 │
-├── Scripts/
-│   ├── Clipping&Masking.R            		             # Clipping each to the city's bounding box.
-│   ├── Clipping&Masking_diagnosis.R                   # Diagnosing the clipping of the rasters.
-│   ├── Global_NDVI-LST_regression_analysis.R          # NDVI-LST regression analysis per urban villages.
-│   ├── LST_compositing.R             		             # Median compositing.
-│   ├── LST_preprocessing.R           		             # QC filtration and scaling.
-│   ├── LST_resampling.R             	 	               # Upscaling to the 250m grid.
-│   ├── LST_resampling_diagnosis.R                     # Diagnosing the resampling of LST to the NDVI grid.
-│   ├── NDVI_compositing.R            		             # Median compositing.
-│   ├── NDVI_preprocessing.R          		             # QC filtration and scaling.
-│   ├── SUHI_computation.R            		             # Quantifying surface urban heat island (SUHI) effect.
-│   ├── Stratified_NDVI-LST_regression_analysis.R      # NDVI-LST regression analysis for the whole of Phoenix.
-│   ├── UrbanVsRural_Mask.R           		             # Contrasting urban temperatures to the rural reference zone.
-│   ├── Zonal_statistics.py           		             # Python zonal statistics for villages.
-│
+├── scripts/                       # Scripts embedded in the KNIME nodes
+│   ├── NDVI_preprocessing.R / LST_preprocessing.R      # QC filtration and scaling
+│   ├── NDVI_compositing.R / LST_compositing.R          # Seasonal median compositing
+│   ├── LST_resampling.R                                # TsHARP sharpening (tsharp_disaggregate) + diagnose_sharpening_quality
+│   ├── LST_resampling_diagnosis.R                      # Diagnostics for the LST resampling step
+│   ├── Clipping&Masking.R / Clipping&Masking_diagnosis.R
+│   ├── UrbanVsRural_Mask.R                             # Elevation-matched rural reference zone and baseline
+│   ├── rural_reference_zone_redefinition.R             # Standalone Census Urbanized Area + ESA WorldCover mask
+│   ├── rural_reference_zone_sensitivity_analysis.R     # Standalone sensitivity analysis of the rural baseline (run in RStudio)
+│   ├── SUHI_computation.R
+│   ├── Global_NDVI-LST_regression_analysis.R           # City-wide (pooled) regression
+│   ├── Stratified_NDVI-LST_regression_analysis.R       # Per-village regression
+│   └── Zonal_statistics.py                             # Python zonal statistics for villages
 │
 ├── .gitignore
 ├── LICENSE
@@ -93,20 +91,37 @@ conda install -c conda-forge rasterio geopandas rasterstats pandas numpy
 ```
 Or use the provided environment file:
 ```bash
-conda env create -f environment.yml
+conda env create -f Environments/environment.yml
 ```
 
 - **R** (Linked via the Conda Environment Propagation node)
 ```bash
-install.packages(c("terra", "raster", "ggplot2", "dplyr"))
+install.packages(c("terra", "raster", "ggplot2", "dplyr", "tigris", "elevatr"))
 ```
 Or use the provided environment file:
 ```bash
-conda env create -f R_environment.yml
+conda env create -f Environments/R_environment.yml
 ```
 
 This workflow uses two separate Conda environments — one for Python and one for R — to support different scripting nodes in KNIME.
 Each environment can be recreated from the provided .yml files.
+
+⸻
+
+
+## 📥 Data Acquisition and Local Paths
+
+Full-extent inputs are not stored in this repository. To reproduce the reported values:
+
+1. **MODIS** – submit an AppEEARS area-sample request (https://appeears.earthdatacloud.nasa.gov/task/area) for the Phoenix extent, 1 May – 31 Aug 2024, for MOD11A2.061 (`LST_Day_1km` with `QC_Day`) and MOD13Q1.061 (`250m_16_days_NDVI` with `250m_16_days_VI_Quality`), GeoTIFF output.
+2. **Boundaries** – City of Phoenix city limit and urban villages (https://www.phoenixopendata.com); US Census 2020 Urbanized Areas (retrieved with the `tigris` R package).
+3. **Land cover** – ESA WorldCover v200 tile N33W114 (https://esa-worldcover.org).
+4. **Elevation** – SRTM-derived DEM retrieved with the `elevatr` R package.
+
+Scripts read a data root from the environment variable `PHX_ROOT` (default: a `PhoenixData2` folder in the working directory) and expect sub-folders such as `Boundary/`, `LST/`, `Preprocessed/`, and `WorldCover/`. Set it before running, e.g. `Sys.setenv(PHX_ROOT = "/path/to/PhoenixData2")` in R, or `export PHX_ROOT=/path/to/PhoenixData2` for the Python node. Values inside KNIME nodes that arrive as flow variables (e.g. `lst_wide_path`) are unchanged.
+
+The sensitivity analysis of the rural reference zone (`scripts/rural_reference_zone_sensitivity_analysis.R`) runs outside KNIME in R/RStudio and writes its outputs to `<PHX_ROOT>/Sensitivity/`.
+
 
 ⸻
 
@@ -125,7 +140,7 @@ NDVIcomposite(x,y) = median(NDVIt(x,y)),		∀ t ∈ May - Aug 2024
 
 (3) Surface Urban Heat Island (SUHI):
 ```bash
-SUHI(x,y) = LST(x,y) - mean(LSTrural)
+SUHI(x,y) = LST(x,y) - mean(LSTrural)     # rural = non-built-up land outside the Census Urbanized Area, elevation-matched to the urban core
 ```
 
 (4) NDVI–LST Regression:
@@ -176,7 +191,7 @@ LST = 𝜶 + 𝜷 · NDVI
 
 If you use this repository, please cite:
 
-Rop, Alex; Jain, Devika (2025). Designing Scalable Workflows for Spatial Analysis of Earth Observation Data using KNIME: A Case Study of Phoenix (May–August 2024).
+Rop, Alex; Jain, Devika (2026). Harmonizing Multi-Resolution Earth Observation Data through Scalable KNIME Workflows: A Surface Urban Heat Island Case Study in Phoenix, Arizona.
 
 [GitHub Repository](https://github.com/roplex/Phoenix_SUHI_KNIME_Workflow)
 

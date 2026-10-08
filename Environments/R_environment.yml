@@ -13,6 +13,8 @@ dependencies:
   - r-sf
   - r-sp
   - r-terra
+  - r-tigris        # Census Urbanized Area boundaries
+  - r-elevatr       # SRTM-derived elevation (rural-zone elevation matching)
   - r-stars
 
   # --- Data manipulation and visualization ---
