@@ -60,6 +60,7 @@ The workflow includes:
 │   ├── UrbanVsRural_Mask.R                             # Elevation-matched rural reference zone and baseline
 │   ├── rural_reference_zone_redefinition.R             # Standalone Census Urbanized Area + ESA WorldCover mask
 │   ├── rural_reference_zone_sensitivity_analysis.R     # Standalone sensitivity analysis of the rural baseline (run in RStudio)
+│   ├── make_sensitivity_figures.py                     # Draws Figures 7.11 and 7.12 from the sensitivity outputs (matplotlib)
 │   ├── SUHI_computation.R
 │   ├── Global_NDVI-LST_regression_analysis.R           # City-wide (pooled) regression
 │   ├── Stratified_NDVI-LST_regression_analysis.R       # Per-village regression
