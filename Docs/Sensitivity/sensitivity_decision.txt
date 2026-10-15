@@ -1,0 +1,19 @@
+SENSITIVITY OF THE RURAL REFERENCE-ZONE BASELINE (Chapter 7)
+Primary (chapter) baseline, reproduced here : 47.96 degC (n = 4360) [chapter: 47.89]
+Reproduction within 0.15 degC                : YES
+Scenarios retained as 'defensible' (n >= 200)  : 48
+Range of baseline across them               : 47.34 to 49.07 degC (spread 1.72 degC)
+Spread by family (degC)                     : A_elevation=0.75; B_landcover=0.22; C_buffer=1.24; D_distribution=0.05
+Bootstrap 95% CI of primary baseline        : 47.60 to 48.32 degC
+City-wide mean urban LST used for SUHI      : 46.81 degC
+Implied city-wide SUHI across scenarios     : -2.26 to -0.54 degC (primary -1.15)
+Sign of city-wide SUHI stable?              : YES
+Temporal (family E, kept separate): per-scene city-wide SUHI mean -1.30, range -3.46 to 0.06 degC across 16 scenes; seasonal change in baseline is mirrored by the urban side, so SUHI is the quantity to compare
+Villages with SUHI > 0 across scenarios     : 0 to 2 of 14
+
+VERDICT: SENSITIVE. The baseline moves by 1.72 degC (> 1.0 degC) across defensible alternatives. Report the range as an explicit uncertainty on the SUHI magnitude and name the families driving it (see 'Spread by family').
+
+NOTE: the baseline is a single constant subtracted from every pixel, so these choices shift the MAGNITUDE (and possibly the sign) of SUHI
+everywhere by the same amount; they do not change the ranking of villages or pixels.
+Scenarios flagged LOW_N, single-class land-cover tests, absolute elevation bands, matching tolerances of +/-300 and +/-500 m (which no longer match the urban core),
+leave-one-out and random subsamples are in sensitivity_summary.csv but excluded from the range above because they are diagnostics, not candidate definitions.
