@@ -38,7 +38,7 @@ The workflow includes:
 │   ├── Sample_NDVI.tif
 │   └── Villages.geojson
 │
-├── Docs/                          # Example outputs (incl. Docs/Sensitivity/: sensitivity-analysis results and Figures 7.11–7.12)
+├── Docs/                          # Example outputs (incl. Docs/Figures/: chapter Figures 7.1–7.16; Docs/Sensitivity/: sensitivity-analysis results)
 │   ├── NDVI_LST_scatter.png
 │   ├── Phoenix_Workflow.svg
 │   ├── SUHI_map.tif
