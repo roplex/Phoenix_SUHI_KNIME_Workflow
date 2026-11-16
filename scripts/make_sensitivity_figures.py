@@ -1,9 +1,9 @@
-# Builds Figure 7.11 (forest plot of rural-baseline scenarios) and Figure 7.12
+# Builds Figure 7.12 (forest plot of rural-baseline scenarios) and Figure 7.13
 # (per-scene baseline / urban LST / SUHI) from the outputs of
 # rural_reference_zone_sensitivity_analysis.R.
 # Reads  <PHX_ROOT>/Sensitivity/sensitivity_summary.csv
 #        <PHX_ROOT>/Sensitivity/sensitivity_temporal_by_scene.csv
-# Writes Figure_7_11_sensitivity_forest.png, Figure_7_12_sensitivity_temporal.png
+# Writes Figure_7_12_sensitivity_forest.png, Figure_7_13_sensitivity_temporal.png
 #        into the same folder. Requires matplotlib. Usage: PHX_ROOT=/path python make_sensitivity_figures.py
 import csv, os, datetime as dt
 import matplotlib; matplotlib.use('Agg')
@@ -66,7 +66,7 @@ ax.legend(handles=[Line2D([],[],color='#0b0b0b',ls='--',lw=.9,label='Chapter bas
   Line2D([],[],marker='o',mfc='white',mec=GRY,ls='',label='Diagnostic only (tolerance no longer matches urban core)')],
   loc='upper right',bbox_to_anchor=(0.0,-0.06),ncol=1,frameon=False,fontsize=7)
 fig.subplots_adjust(left=0.575,right=0.985,top=0.995,bottom=0.15)
-fig.savefig(D+'Figure_7_11_sensitivity_forest.png',dpi=600)
+fig.savefig(D+'Figure_7_12_sensitivity_forest.png',dpi=600)
 # temporal
 T=list(csv.DictReader(open(D+'sensitivity_temporal_by_scene.csv')))
 d=[dt.date.fromisoformat(r['date']) for r in T]
@@ -87,5 +87,5 @@ for a in (a1,a2):
     a.grid(axis='y',color='#e6e5df',lw=.6); a.set_axisbelow(True)
 import matplotlib.dates as md
 a2.xaxis.set_major_locator(md.MonthLocator()); a2.xaxis.set_major_formatter(md.DateFormatter('%b'))
-fig.tight_layout(); fig.savefig(D+'Figure_7_12_sensitivity_temporal.png',dpi=600)
+fig.tight_layout(); fig.savefig(D+'Figure_7_13_sensitivity_temporal.png',dpi=600)
 print(len(d),min(su),max(su),mean)
